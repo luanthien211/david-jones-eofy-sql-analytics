@@ -107,10 +107,46 @@ An inverse relationship emerges: the highest-revenue platforms (YouTube, TikTok)
 The top creative is a TikTok ad using urgent "Final Days" messaging, suggesting time-sensitive copy drives fast conversions on short-form platforms.
 
 ### 4. Category popularity by platform
-*Which categories sell best on each platform?* Adds a join to `PRODUCT` and groups by platform and category. Facebook leads in Women's Fashion (4 units), TikTok in Men's Fashion (3 units), and X in Kitchen (3 units), pointing to a clear product-to-platform fit that targeted campaigns could exploit.
+*Which categories sell best on each platform?* Adds a join to `PRODUCT` and groups by platform and category.
+
+| Platform | Category | Units sold |
+|---|---|---|
+| Facebook | Women Fashion | 4 |
+| TikTok | Men Fashion | 3 |
+| X | Kitchen | 3 |
+| Facebook | Accessories | 2 |
+| TikTok | Beauty | 2 |
+| Instagram | Beauty | 2 |
+| Instagram | Home | 2 |
+| YouTube | Technology | 2 |
+| YouTube | Kids | 2 |
+| Facebook | Electrical | 1 |
+| TikTok | Footwear | 1 |
+| TikTok | Kitchen | 1 |
+| Instagram | Accessories | 1 |
+| Instagram | Toys | 1 |
+| X | Accessories | 1 |
+| YouTube | Fragrance | 1 |
+| YouTube | Footwear | 1 |
+
+Facebook leads in Women's Fashion (4 units), TikTok in Men's Fashion (3 units), and X in Kitchen (3 units), pointing to a clear product-to-platform fit that targeted campaigns could exploit.
 
 ### 5. Platform performance by time window
-*When does each platform perform best?* Uses a `CASE` statement on `HOUR(Order_Date)` to bucket orders into late night, morning, afternoon, and evening, with `COUNT(DISTINCT Order_ID)` to avoid double-counting multi-item orders. Facebook dominates mornings, Instagram and X peak in the afternoon, and TikTok and YouTube drive the evening (together over $1,460 gross). This supports a dayparting strategy for ad scheduling.
+*When does each platform perform best?* Uses a `CASE` statement on `HOUR(Order_Date)` to bucket orders into late night, morning, afternoon, and evening, with `COUNT(DISTINCT Order_ID)` to avoid double-counting multi-item orders.
+
+| Time window | Platform | Orders | Gross revenue |
+|---|---|---|---|
+| 1. Late Night (00-06) | TikTok | 1 | $249.00 |
+| 1. Late Night (00-06) | YouTube | 1 | $179.99 |
+| 2. Morning (06-12) | Facebook | 3 | $896.95 |
+| 3. Afternoon (12-18) | Instagram | 4 | $794.99 |
+| 3. Afternoon (12-18) | X | 3 | $596.00 |
+| 3. Afternoon (12-18) | YouTube | 1 | $399.00 |
+| 4. Evening (18-00) | TikTok | 3 | $824.99 |
+| 4. Evening (18-00) | YouTube | 3 | $637.90 |
+| 4. Evening (18-00) | Facebook | 1 | $209.85 |
+
+Facebook dominates mornings, Instagram and X peak in the afternoon, and TikTok and YouTube drive the evening (together over $1,460 gross). This supports a dayparting strategy for ad scheduling.
 
 ### 6. Ad-driven order rate
 *How much of the campaign's sales is ad-attributable?* A `LEFT JOIN` keeps all orders, including organic ones, so ad-driven orders can be compared against the total.
